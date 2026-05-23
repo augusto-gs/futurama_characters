@@ -15,7 +15,7 @@ export interface Character {
   images: CharacterImages;
   gender: string;
   species: string;
-  homePlanet: string;
+  homePlanet?: string;
   occupation: string;
   age?: string;
   sayings?: string[];
