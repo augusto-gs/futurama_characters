@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { CharacterListPage } from "./pages/CharactersListPage";
-import { CharacterDetailPage } from "./pages/CharacterDetailPage";
+import { CharacterListPage } from "./pages/CharactersListPage/CharactersListPage";
+import { CharacterDetailPage } from "./pages/CharacterDetailPage/CharacterDetailPage";
 
 function App() {
   return (

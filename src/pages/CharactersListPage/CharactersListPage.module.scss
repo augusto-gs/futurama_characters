@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__list {
+    width: 100%;
+    overflow-y: auto;
+    background: $color-white;
+  }
+
+  &__detail {
+    display: none;
+  }
+
+  &--detail-open {
+    .layout__list {
+      display: none;
+    }
+
+    .layout__detail {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  @include desktop {
+    flex-direction: row;
+
+    &__list {
+      width: 340px;
+      flex-shrink: 0;
+      border-right: 1px solid $color-border;
+    }
+
+    &__detail {
+      display: block;
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+}
