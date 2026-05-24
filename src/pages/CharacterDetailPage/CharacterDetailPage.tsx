@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { fetchCharacterById } from "../../api/characters";
 import styles from "./CharacterDetailPage.module.scss";
+import { ChevronLeft } from "lucide-react";
 
 export function CharacterDetailPage() {
   const { id } = useParams();
@@ -22,6 +23,13 @@ export function CharacterDetailPage() {
 
   return (
     <div className={styles.detail}>
+      <button
+        className={styles.detail__backButton}
+        onClick={() => navigate("/characters")}
+      >
+        <ChevronLeft size={20} />
+        Back
+      </button>
       <div className={styles.detail__header}>
         <img
           src={images.main}

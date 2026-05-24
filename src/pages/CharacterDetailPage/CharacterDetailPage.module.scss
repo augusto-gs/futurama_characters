@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .detail {
   padding: $spacing-md;
@@ -10,6 +10,27 @@
     display: flex;
     gap: $spacing-md;
     margin-bottom: $spacing-lg;
+  }
+
+  &__backButton {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: $font-size-md;
+    color: $color-secondary;
+    padding: 0;
+    margin-bottom: $spacing-md;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    @include desktop {
+      display: none;
+    }
   }
 
   &__image {
