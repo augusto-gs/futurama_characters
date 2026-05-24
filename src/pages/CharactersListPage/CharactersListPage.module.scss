@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .layout {
   display: flex;
@@ -10,6 +10,24 @@
     width: 100%;
     overflow-y: auto;
     background: $color-white;
+    padding: $spacing-md;
+
+    h1 {
+      margin-bottom: $spacing-md;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+
+    li {
+      border: 1px solid $color-border;
+      border-radius: 8px;
+      overflow: hidden;
+      background: $color-white;
+    }
   }
 
   &__detail {
@@ -40,6 +58,12 @@
       display: block;
       flex: 1;
       overflow-y: auto;
+    }
+
+    &--detail-open {
+      .layout__list {
+        display: block;
+      }
     }
   }
 }

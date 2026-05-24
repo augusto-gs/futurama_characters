@@ -1,6 +1,6 @@
 export interface CharacterName {
   first: string;
-  second: string;
+  middle: string;
   last: string;
 }
 

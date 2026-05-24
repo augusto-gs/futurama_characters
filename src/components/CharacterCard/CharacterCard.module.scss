@@ -1,0 +1,58 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  text-decoration: none;
+  color: $color-primary;
+  border-bottom: 1px solid $color-border;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100%;
+
+  &:hover {
+    background-color: $color-background;
+  }
+
+  &--selected {
+    background-color: $color-background;
+    border-left: 3px solid $color-primary;
+  }
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-md;
+    margin-bottom: 2px;
+  }
+
+  &__meta {
+    font-size: $font-size-sm;
+    color: $color-secondary;
+  }
+
+  &__occupation {
+    font-size: $font-size-sm;
+    color: $color-secondary;
+  }
+
+  &__favourite {
+    color: $color-favorite;
+    font-size: $font-size-lg;
+    flex-shrink: 0;
+  }
+}
