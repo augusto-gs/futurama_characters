@@ -11,6 +11,7 @@ function App() {
           <Route index element={<p>Select a character</p>} />
           <Route path=":id" element={<CharacterDetailPage />} />
         </Route>
+        <Route path="*" element={<Navigate to="/characters" replace />} />
       </Routes>
     </BrowserRouter>
   );

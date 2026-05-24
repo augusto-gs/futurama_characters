@@ -1,47 +1,21 @@
-import { useParams } from "react-router-dom";
-import type { Character } from "../../types/characters";
+import { useParams, useNavigate } from "react-router-dom";
+import { useCallback } from "react";
+import { useFetch } from "../../hooks/useFetch";
+import { fetchCharacterById } from "../../api/characters";
 import styles from "./CharacterDetailPage.module.scss";
-
-const mockCharacters: Character[] = [
-  {
-    id: 1,
-    name: { first: "Philip", middle: "Jay", last: "Fry" },
-    images: {
-      "head-shot": "",
-      main: "https://upload.wikimedia.org/wikipedia/en/2/28/Philip_Fry.png"
-    },
-    gender: "Male",
-    species: "Human",
-    homePlanet: "Earth",
-    occupation: "Intergalactic Delivery Boy",
-    age: "25",
-    sayings: ["Shut up and take my money!"]
-  },
-  {
-    id: 2,
-    name: { first: "Turanga", middle: "", last: "Leela" },
-    images: {
-      "head-shot": "",
-      main: "https://upload.wikimedia.org/wikipedia/en/d/d4/Turanga_Leela.png"
-    },
-    gender: "Female",
-    species: "Mutant",
-    homePlanet: "Earth",
-    occupation: "Captain and pilot",
-    sayings: [
-      "Bender, this is Fry's decision... and he made it wrong. So it's time for us to interfere in his life.",
-      "With my Oxo Goodgrips cheese knife, I stab at thee!",
-      "I usually try to keep my sadness pent up inside where it can fester quietly as a mental illness.",
-      "I was having the most wonderful dream. Except you were there, and you were there, and you were there!"
-    ]
-  }
-];
 
 export function CharacterDetailPage() {
   const { id } = useParams();
-  const character = mockCharacters.find((character) => String(character.id) === id);
+  const numericId = Number(id);
+  const navigate = useNavigate();
 
-  if (!character) return <p>Character not found</p>;
+  const fetcher = useCallback(() => fetchCharacterById(numericId), [numericId]);
+  const { data: character, loading, error } = useFetch(fetcher);
+
+  if (!id || isNaN(numericId)) return <p>Invalid character ID.</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Something went wrong.</p>;
+  if (!character) return <p>Character not found.</p>;
 
   const { name, images, age, gender, species, occupation, sayings } = character;
   const fullName = `${name.first} ${name.last}`;
