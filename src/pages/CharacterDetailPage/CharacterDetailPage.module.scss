@@ -1,0 +1,72 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.detail {
+  padding: $spacing-md;
+  background: $color-white;
+  min-height: 100%;
+
+  &__header {
+    display: flex;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__image {
+    width: 80px;
+    height: 100px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__nameRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+  }
+
+  &__meta {
+    font-size: $font-size-sm;
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__occupation {
+    font-size: $font-size-sm;
+    color: $color-secondary;
+  }
+
+  &__sayings {
+    border-top: 1px solid $color-border;
+    padding-top: $spacing-md;
+  }
+
+  &__sayingsTitle {
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__saying {
+    font-size: $font-size-sm;
+    color: $color-secondary;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
