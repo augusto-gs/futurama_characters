@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  text-align: center;
+  min-height: 200px;
+
+  &--loading {
+    color: $color-secondary;
+  }
+
+  &--error {
+    color: $color-favourite;
+  }
+
+  &--empty {
+    color: $color-secondary;
+  }
+}
+
+.icon {
+  display: flex;
+  margin-bottom: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: inherit;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-secondary;
+}
