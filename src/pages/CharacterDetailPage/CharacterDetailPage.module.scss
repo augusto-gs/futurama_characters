@@ -9,7 +9,7 @@
   &__header {
     display: flex;
     gap: $spacing-md;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
   }
 
   &__backButton {
@@ -61,7 +61,7 @@
   &__meta {
     font-size: $font-size-sm;
     color: $color-secondary;
-    margin-bottom: 4px;
+    margin-bottom: $spacing-xm;
   }
 
   &__occupation {
