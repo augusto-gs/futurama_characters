@@ -1,16 +1,20 @@
+import { useCallback, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import { ChevronLeft } from "lucide-react";
 import { useFetch } from "../../hooks/useFetch";
 import { fetchCharacterById } from "../../api/characters";
+import { FavouriteButton } from "../../components/FavouriteButton/FavouriteButton";
+import { FavouritesContext } from "../../context/FavouritesContext";
 import styles from "./CharacterDetailPage.module.scss";
-import { ChevronLeft } from "lucide-react";
 
 export function CharacterDetailPage() {
   const { id } = useParams();
-  const numericId = Number(id);
   const navigate = useNavigate();
+  const numericId = Number(id);
+  const { isFavourite, toggleFavourite } = useContext(FavouritesContext);
 
   const fetcher = useCallback(() => fetchCharacterById(numericId), [numericId]);
+
   const { data: character, loading, error } = useFetch(fetcher);
 
   if (!id || isNaN(numericId)) return <p>Invalid character ID.</p>;
@@ -30,6 +34,7 @@ export function CharacterDetailPage() {
         <ChevronLeft size={20} />
         Back
       </button>
+
       <div className={styles.detail__header}>
         <img
           src={images.main}
@@ -39,6 +44,11 @@ export function CharacterDetailPage() {
         <div className={styles.detail__info}>
           <div className={styles.detail__nameRow}>
             <h2 className={styles.detail__name}>{fullName}</h2>
+            <FavouriteButton
+              isFavourite={isFavourite(character.id)}
+              onClick={() => toggleFavourite(character.id)}
+              clickable
+            />
           </div>
           <p className={styles.detail__meta}>
             {[age, gender, species].filter(Boolean).join(" · ")}

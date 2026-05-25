@@ -1,18 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import type { Character } from "../../types/characters";
+import { FavouriteButton } from "../FavouriteButton/FavouriteButton";
+import { FavouritesContext } from "../../context/FavouritesContext";
 import styles from "./CharacterCard.module.scss";
 
 interface CharacterCardProps {
   character: Character;
   isSelected?: boolean;
-  isFavourite?: boolean;
 }
 
 export function CharacterCard({
   character,
-  isSelected = false,
-  isFavourite = false
+  isSelected = false
 }: CharacterCardProps) {
+  const { isFavourite } = useContext(FavouritesContext);
   const { id, name, images, age, gender, species, occupation } = character;
   const fullName = `${name.first} ${name.last}`;
 
@@ -29,11 +31,7 @@ export function CharacterCard({
         </p>
         {occupation && <p className={styles.card__occupation}>{occupation}</p>}
       </div>
-      {isFavourite && (
-        <span className={styles.card__favourite} aria-label="Favourite">
-          ♥
-        </span>
-      )}
+      <FavouriteButton isFavourite={isFavourite(id)} />
     </Link>
   );
 }
