@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: $color-secondary;
+  flex-shrink: 0;
+
+  &[aria-checked="true"] {
+    color: $color-favorite;
+  }
+
+  &:hover {
+    color: $color-favorite;
+  }
+}
+
+.icon {
+  color: $color-favorite;
+}
