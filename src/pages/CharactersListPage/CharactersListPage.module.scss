@@ -10,7 +10,9 @@
     width: 100%;
     overflow-y: auto;
     background: $color-white;
-    padding: $spacing-md;
+    // padding: $spacing-md;
+    display: flex;
+    flex-direction: column;
 
     h1 {
       margin-bottom: $spacing-md;
@@ -28,6 +30,24 @@
       overflow: hidden;
       background: $color-white;
     }
+  }
+
+  &__listHeader {
+    position: sticky;
+    top: 0;
+    background: $color-white;
+    padding: $spacing-md;
+    padding-bottom: 0;
+    z-index: 10;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__listContent {
+    padding: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    flex: 1;
   }
 
   &__detail {
