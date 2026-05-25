@@ -2,14 +2,19 @@
 @use "../../styles/mixins" as *;
 
 .detail {
-  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
   background: $color-white;
-  min-height: 100%;
 
   &__header {
-    display: flex;
-    gap: $spacing-md;
-    margin-bottom: $spacing-md;
+    position: sticky;
+    top: 0;
+    background: $color-white;
+    z-index: 10;
+    padding: $spacing-md;
+    border-bottom: 1px solid $color-border;
   }
 
   &__backButton {
@@ -23,6 +28,7 @@
     color: $color-secondary;
     padding: 0;
     margin-bottom: $spacing-md;
+    font-family: "Outfit", sans-serif;
 
     &:hover {
       color: $color-primary;
@@ -31,6 +37,12 @@
     @include desktop {
       display: none;
     }
+  }
+
+  &__characterInfo {
+    display: flex;
+    gap: $spacing-md;
+    align-items: flex-start;
   }
 
   &__image {
@@ -69,25 +81,30 @@
     color: $color-secondary;
   }
 
+  &__content {
+    padding: $spacing-md;
+    flex: 1;
+  }
+
   &__sayings {
-    border-top: 1px solid $color-border;
     padding-top: $spacing-md;
   }
 
   &__sayingsTitle {
     font-size: $font-size-md;
     font-weight: $font-weight-bold;
-    margin-bottom: $spacing-sm;
+    margin-bottom: $spacing-md;
   }
 
   &__saying {
     font-size: $font-size-sm;
     color: $color-secondary;
-    padding: $spacing-sm 0;
-    border-bottom: 1px solid $color-border;
+    padding: $spacing-sm 0 $spacing-sm $spacing-md;
+    border-left: 3px solid $color-border;
+    margin-bottom: $spacing-sm;
 
     &:last-child {
-      border-bottom: none;
+      margin-bottom: 0;
     }
   }
 }

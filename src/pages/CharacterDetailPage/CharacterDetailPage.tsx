@@ -36,50 +36,53 @@ export function CharacterDetailPage() {
 
   return (
     <div className={styles.detail}>
-      <button
-        className={styles.detail__backButton}
-        onClick={() => navigate("/characters")}
-      >
-        <ChevronLeft size={20} />
-        Back
-      </button>
-
       <div className={styles.detail__header}>
-        <img
-          src={images.main}
-          alt={fullName}
-          className={styles.detail__image}
-        />
-        <div className={styles.detail__info}>
-          <div className={styles.detail__nameRow}>
-            <h2 className={styles.detail__name}>{fullName}</h2>
-            <FavouriteButton
-              isFavourite={isFavourite(character.id)}
-              onClick={() => toggleFavourite(character.id)}
-              clickable
-            />
+        <button
+          className={styles.detail__backButton}
+          onClick={() => navigate("/characters")}
+        >
+          <ChevronLeft size={20} />
+          Back
+        </button>
+        <div className={styles.detail__characterInfo}>
+          <img
+            src={images.main}
+            alt={fullName}
+            className={styles.detail__image}
+          />
+          <div className={styles.detail__info}>
+            <div className={styles.detail__nameRow}>
+              <h2 className={styles.detail__name}>{fullName}</h2>
+              <FavouriteButton
+                isFavourite={isFavourite(character.id)}
+                onClick={() => toggleFavourite(character.id)}
+                clickable
+              />
+            </div>
+            <p className={styles.detail__meta}>
+              {[age, gender, species].filter(Boolean).join(" · ")}
+            </p>
+            {occupation && (
+              <p className={styles.detail__occupation}>{occupation}</p>
+            )}
           </div>
-          <p className={styles.detail__meta}>
-            {[age, gender, species].filter(Boolean).join(" · ")}
-          </p>
-          {occupation && (
-            <p className={styles.detail__occupation}>{occupation}</p>
-          )}
         </div>
       </div>
 
-      {sayings && sayings.length > 0 && (
-        <div className={styles.detail__sayings}>
-          <h3 className={styles.detail__sayingsTitle}>Sayings</h3>
-          <ul>
-            {sayings.map((saying, index) => (
-              <li key={index} className={styles.detail__saying}>
-                {saying}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className={styles.detail__content}>
+        {sayings && sayings.length > 0 && (
+          <div className={styles.detail__sayings}>
+            <h3 className={styles.detail__sayingsTitle}>Sayings</h3>
+            <ul>
+              {sayings.map((saying, index) => (
+                <li key={index} className={styles.detail__saying}>
+                  {saying}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

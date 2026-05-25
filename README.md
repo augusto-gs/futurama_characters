@@ -1,6 +1,6 @@
 # Futurama Characters App
 
-A responsive two-screen React application that displays characters from the Futurama TV series, built as part of a technical assessment for TheLeftBit.
+A responsive two-screen React application that displays characters from the Futurama TV series
 
 ## Tech Stack
 
@@ -14,6 +14,7 @@ A responsive two-screen React application that displays characters from the Futu
 - Browse the full list of Futurama characters
 - View detailed information for each character, including their known sayings
 - Mark characters as favourites — persisted across sessions via `localStorage`
+- Filter the character list for favourite characters for simplified viewing
 - Responsive layout: single-column on mobile, side-by-side on screens wider than 600px
 
 ## Getting Started

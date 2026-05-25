@@ -32,37 +32,40 @@ export function CharactersListPage() {
       className={`${styles.layout} ${isDetailOpen ? styles["layout--detail-open"] : ""}`}
     >
       <aside className={styles.layout__list}>
-        <h1>Characters List</h1>
-
-        <div className={styles.layout__filters}>
-          <button
-            className={`${styles.filter} ${activeFilter === "all" ? styles["filter--active"] : ""}`}
-            onClick={() => setActiveFilter("all")}
-          >
-            All
-          </button>
-          <button
-            className={`${styles.filter} ${activeFilter === "favourites" ? styles["filter--active"] : ""}`}
-            onClick={() => setActiveFilter("favourites")}
-          >
-            Favourites
-          </button>
+        <div className={styles.layout__listHeader}>
+          <h1>Characters List</h1>
+          <div className={styles.layout__filters}>
+            <button
+              className={`${styles.filter} ${activeFilter === "all" ? styles["filter--active"] : ""}`}
+              onClick={() => setActiveFilter("all")}
+            >
+              All
+            </button>
+            <button
+              className={`${styles.filter} ${activeFilter === "favourites" ? styles["filter--active"] : ""}`}
+              onClick={() => setActiveFilter("favourites")}
+            >
+              Favourites
+            </button>
+          </div>
         </div>
 
-        {visibleCharacters.length === 0 ? (
-          <StatusMessage variant="empty" />
-        ) : (
-          <ul>
-            {visibleCharacters.map((character) => (
-              <li key={character.id}>
-                <CharacterCard
-                  character={character}
-                  isSelected={String(character.id) === id}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className={styles.layout__listContent}>
+          {visibleCharacters.length === 0 ? (
+            <StatusMessage variant="empty" />
+          ) : (
+            <ul>
+              {visibleCharacters.map((character) => (
+                <li key={character.id}>
+                  <CharacterCard
+                    character={character}
+                    isSelected={String(character.id) === id}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </aside>
       <main className={styles.layout__detail}>
         <Outlet />
