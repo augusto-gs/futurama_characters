@@ -4,6 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import { useFetch } from "../../hooks/useFetch";
 import { fetchCharacterById } from "../../api/characters";
 import { FavouriteButton } from "../../components/FavouriteButton/FavouriteButton";
+import { StatusMessage } from "../../components/StatusMessage/StatusMessage";
 import { FavouritesContext } from "../../context/FavouritesContext";
 import styles from "./CharacterDetailPage.module.scss";
 
@@ -17,10 +18,18 @@ export function CharacterDetailPage() {
 
   const { data: character, loading, error } = useFetch(fetcher);
 
-  if (!id || isNaN(numericId)) return <p>Invalid character ID.</p>;
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Something went wrong.</p>;
-  if (!character) return <p>Character not found.</p>;
+  if (!id || isNaN(numericId))
+    return <StatusMessage variant="error" title="Invalid character" />;
+  if (loading) return <StatusMessage variant="loading" />;
+  if (error) return <StatusMessage variant="error" />;
+  if (!character)
+    return (
+      <StatusMessage
+        variant="empty"
+        title="Character not found"
+        description="The character you're looking for doesn't exist."
+      />
+    );
 
   const { name, images, age, gender, species, occupation, sayings } = character;
   const fullName = `${name.first} ${name.last}`;

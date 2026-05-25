@@ -3,6 +3,7 @@ import { Outlet, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { fetchCharacters } from "../../api/characters";
 import { CharacterCard } from "../../components/CharacterCard/CharacterCard";
+import { StatusMessage } from "../../components/StatusMessage/StatusMessage";
 import { FavouritesContext } from "../../context/FavouritesContext";
 import styles from "./CharactersListPage.module.scss";
 
@@ -16,10 +17,10 @@ export function CharactersListPage() {
 
   const { data: characters, loading, error } = useFetch(fetchCharacters);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Something went wrong.</p>;
+  if (loading) return <StatusMessage variant="loading" />;
+  if (error) return <StatusMessage variant="error" />;
   if (!characters || characters.length === 0)
-    return <p>No characters found.</p>;
+    return <StatusMessage variant="empty" title="No characters found" />;
 
   const visibleCharacters = {
     all: characters,
@@ -49,7 +50,7 @@ export function CharactersListPage() {
         </div>
 
         {visibleCharacters.length === 0 ? (
-          <p className={styles.layout__empty}>No favourites yet.</p>
+          <StatusMessage variant="empty" />
         ) : (
           <ul>
             {visibleCharacters.map((character) => (
