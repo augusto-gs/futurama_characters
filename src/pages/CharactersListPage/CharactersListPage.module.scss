@@ -10,7 +10,6 @@
     width: 100%;
     overflow-y: auto;
     background: $color-white;
-    // padding: $spacing-md;
     display: flex;
     flex-direction: column;
 
@@ -60,8 +59,11 @@
     }
 
     .layout__detail {
-      display: block;
+      display: flex;
+      flex-direction: column;
       width: 100%;
+      height: 100vh; 
+      overflow-y: auto; 
     }
   }
 

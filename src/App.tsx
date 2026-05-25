@@ -10,7 +10,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/characters" replace />} />
         <Route path="/characters" element={<CharactersListPage />}>
-          {/* <Route index element={<p>Select a character</p>} /> */}
           <Route
             index
             element={

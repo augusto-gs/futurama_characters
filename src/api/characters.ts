@@ -1,6 +1,6 @@
 import type { Character } from "../types/characters";
 
-const BASE_URL = "https://api.sampleapis.com/futurama/";
+const BASE_URL = "https://api.sampleapis.com/futurama";
 
 export async function fetchCharacters(): Promise<Character[]> {
   const res = await fetch(`${BASE_URL}/characters`);
