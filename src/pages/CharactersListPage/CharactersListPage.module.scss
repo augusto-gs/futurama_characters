@@ -67,3 +67,31 @@
     }
   }
 }
+
+.layout__filters {
+  display: flex;
+  gap: $spacing-sm;
+  padding-bottom: $spacing-md;
+}
+
+.filter {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: 20px;
+  background: none;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  color: $color-secondary;
+
+  &:hover:not(#{&}--active) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &--active {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+    cursor: default;
+  }
+}

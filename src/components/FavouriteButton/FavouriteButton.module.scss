@@ -11,14 +11,14 @@
   flex-shrink: 0;
 
   &[aria-checked="true"] {
-    color: $color-favorite;
+    color: $color-favourite;
   }
 
   &:hover {
-    color: $color-favorite;
+    color: $color-favourite;
   }
 }
 
 .icon {
-  color: $color-favorite;
+  color: $color-favourite;
 }
